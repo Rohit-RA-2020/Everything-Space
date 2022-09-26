@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import 'home_screen.dart';
+
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
 
@@ -46,7 +48,18 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                   color: Color(0xFFFFFDD0),
                 ),
               ),
-            )
+            ),
+            OutlinedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => HomeScreen(),
+                  ),
+                );
+              },
+              child: const Text('Get Started'),
+            ),
           ],
         ),
       ),
