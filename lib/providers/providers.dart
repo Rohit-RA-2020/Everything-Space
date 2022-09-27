@@ -5,10 +5,11 @@ final picofDayProvider = StateProvider(
   (ref) => PicOfTheDay(
     date: DateTime.now(),
     explanation: '',
-    hdurl: '',
     mediaType: '',
     serviceVersion: '',
     title: '',
     url: '',
   ),
 );
+
+final videoIdProvider = StateProvider((ref) => '');
