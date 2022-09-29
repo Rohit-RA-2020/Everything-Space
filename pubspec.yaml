@@ -89,6 +89,12 @@ flutter:
     - family: Jua
       fonts:
         - asset: assets/fonts/Jua-Regular.ttf
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto-Regular.ttf
+    - family: Courgette
+      fonts:
+        - asset: assets/fonts/Courgette-Regular.ttf
   # example:
   # fonts:
   #   - family: Schyler

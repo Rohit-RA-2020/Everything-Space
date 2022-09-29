@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:everything_space/providers/providers.dart';
 import 'package:everything_space/services/api_calls.dart';
 import 'package:flutter/material.dart';
@@ -52,11 +53,36 @@ class HomeScreen extends ConsumerWidget {
               ),
             ),
           ),
-          ElevatedButton(
-            onPressed: () => picOfTheDay(ref),
-            child: const Text('Call the Api'),
+          const Divider(
+            color: Color(0xFFFFFDD0),
           ),
-          picOfDay.url != ''
+          picOfDay.title == ''
+              ? ElevatedButton(
+                  onPressed: () => picOfTheDay(ref),
+                  child: const Text('Call the Api'),
+                )
+              : const SizedBox.shrink(),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              picOfDay.title,
+              style: const TextStyle(
+                fontFamily: 'Jua',
+                fontSize: 30,
+                color: Color.fromARGB(255, 136, 241, 91),
+              ),
+            ),
+          ),
+          picOfDay.url != '' && picOfDay.mediaType == 'image'
+              ? Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(30.0),
+                    child: CachedNetworkImage(imageUrl: picOfDay.url),
+                  ),
+                )
+              : const SizedBox.shrink(),
+          picOfDay.url != '' && picOfDay.mediaType == 'video'
               ? Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: YoutubePlayer(
@@ -80,7 +106,11 @@ class HomeScreen extends ConsumerWidget {
                   padding: const EdgeInsets.all(20.0),
                   child: Text(
                     picOfDay.explanation,
-                    style: const TextStyle(color: Colors.white),
+                    style: const TextStyle(
+                      fontFamily: 'Courgette',
+                      fontSize: 18,
+                      color: Color.fromARGB(255, 241, 91, 136),
+                    ),
                   ),
                 ),
         ],
