@@ -1,6 +1,8 @@
-import 'package:flutter/material.dart';
+import 'package:everything_space/utils/colors.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
+import 'package:lottie/lottie.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'home_screen.dart';
 
 class WelcomeScreen extends StatefulWidget {
@@ -49,16 +51,42 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                 ),
               ),
             ),
-            OutlinedButton(
+            LottieBuilder.asset('assets/lottie/welcome.json'),
+            const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Text(
+                'Start your Inter-Space journey',
+                style: TextStyle(
+                  fontFamily: 'Jua',
+                  fontSize: 20,
+                  color: Color.fromARGB(255, 114, 223, 245),
+                ),
+              ),
+            ),
+            const SizedBox(height: 25),
+            NeumorphicButton(
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(
+                  CupertinoPageRoute(
                     builder: (context) => const HomeScreen(),
                   ),
                 );
               },
-              child: const Text('Get Started'),
+              style: const NeumorphicStyle(
+                depth: 2,
+                lightSource: LightSource.topRight,
+                color: bgColor,
+              ),
+              padding: const EdgeInsets.all(12.0),
+              child: const Text(
+                'Get Started',
+                style: TextStyle(
+                  fontFamily: 'Jua',
+                  fontSize: 20,
+                  color: Color.fromARGB(255, 114, 223, 245),
+                ),
+              ),
             ),
           ],
         ),
